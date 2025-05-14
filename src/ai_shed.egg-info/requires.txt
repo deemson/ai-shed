@@ -1,0 +1,5 @@
+accelerate>=1.6.0
+diffusers>=0.33.1
+gradio>=5.29.0
+torch>=2.7.0
+transformers>=4.51.3
