@@ -1,7 +1,0 @@
-README.md
-pyproject.toml
-src/ai_shed.egg-info/PKG-INFO
-src/ai_shed.egg-info/SOURCES.txt
-src/ai_shed.egg-info/dependency_links.txt
-src/ai_shed.egg-info/requires.txt
-src/ai_shed.egg-info/top_level.txt
