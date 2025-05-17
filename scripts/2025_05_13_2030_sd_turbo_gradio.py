@@ -9,7 +9,7 @@ def generate_image(prompt: str) -> Image:
         "stabilityai/sd-turbo", torch_dtype=torch.float16, variant="fp16"
     )
     pipe.to("cuda")
-    image = pipe(prompt=prompt, num_inference_steps=40, guidance_scale=7.0).images[0]
+    image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.0).images[0]
     return image
 
 
