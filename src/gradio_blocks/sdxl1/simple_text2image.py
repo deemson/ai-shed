@@ -11,7 +11,10 @@ def generate_image(
 ) -> Image:
     pipe = StableDiffusionXLPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16)
     pipe.safety_checker = lambda images, **kwargs: (images, [False] * len(images))
-    pipe.to("cuda")
+    pipe.enable_attention_slicing()
+    pipe.enable_vae_slicing()
+    pipe.enable_model_cpu_offload()
+    # pipe.to("cuda")
     ouput = cast(
         StableDiffusionXLPipelineOutput,
         pipe(
@@ -47,8 +50,8 @@ with gr.Blocks() as demo:
                 label="Guidance [1.0, 20.0] -- more = closer follows prompts, less = more creative freedom; 12.0 is practical cutoff",
             )
             with gr.Row(equal_height=True):
-                width_input = gr.Number(minimum=64, maximum=2048, value=512, step=1, label="Width [64, 2048]")
-                height_input = gr.Number(minimum=64, maximum=2048, value=512, step=1, label="Height [64, 2048]")
+                width_input = gr.Number(minimum=64, maximum=2048, value=1024, step=1, label="Width [64, 2048]")
+                height_input = gr.Number(minimum=64, maximum=2048, value=1024, step=1, label="Height [64, 2048]")
             generate_input = gr.Button("Generate", variant="primary")
         with gr.Column():
             image_output = gr.Image()

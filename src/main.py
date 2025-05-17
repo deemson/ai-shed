@@ -47,7 +47,19 @@ models: list[Model] = [
                 gradio_app=sd_1_5.simple_text2image,
             )
         ],
-    )
+    ),
+    Model(
+        name="Stable Diffusion XL",
+        url="sdxl",
+        hugging_face_link="https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        variants=[
+            Variant(
+                name="Simple Text to Image",
+                url="simple-text-to-image",
+                gradio_app=sdxl1.simple_text2image,
+            )
+        ],
+    ),
 ]
 
 index_md_lines = ["# AI Shed"]
